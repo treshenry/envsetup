@@ -26,7 +26,7 @@ if [ -h $HOME/.vimrc ]; then
     echo "Removed old .vimrc sym link."
 fi
 if [ -d $HOME/.vim ]; then
-    mv $HOME/.vim $HOME/.vim_backup
+    mv $HOME/.vim $HOME/.vim_bak
     echo "Moved existing .vim/ to .vim_backup/."
 fi
 if [ -f $HOME/.vimrc ]; then
