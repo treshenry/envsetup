@@ -5,6 +5,8 @@ ENVSETUPENV="Unknown"
 if [ `uname -s` == "Linux" ]; then
     if grep -q "Ubuntu" /etc/issue; then
         ENVSETUPENV="Ubuntu"
+	# go ahead and install a vim with everything compiled in
+	sudo apt-get install vim-gnome
     fi
 fi
 if [ `uname -s` == "Darwin" ]; then
