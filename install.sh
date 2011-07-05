@@ -104,7 +104,12 @@ echo -e "\n----------------------------------------"
 echo "Adding vim-taglist to bundle."
 echo "----------------------------------------"
 git clone https://github.com/mexpolk/vim-taglist.git $HOME/.vim/bundle/vim-taglist
-
+git clone https://github.com/mortice/exuberant-ctags.git $HOME/.vim/ctags
+cd $HOME/.vim/ctags
+./configure
+make
+sudo make install
+rm -rf $HOME/.vim/ctags
 
 echo -e "\n----------------------------------------"
 echo "Adding supertab to bundle."
