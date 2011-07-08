@@ -105,10 +105,12 @@ echo "Adding vim-taglist to bundle."
 echo "----------------------------------------"
 git clone https://github.com/mexpolk/vim-taglist.git $HOME/.vim/bundle/vim-taglist
 git clone https://github.com/mortice/exuberant-ctags.git $HOME/.vim/ctags
+HOLDPATH=`pwd`
 cd $HOME/.vim/ctags
 ./configure
 make
 sudo make install
+cd $HOLDPATH
 rm -rf $HOME/.vim/ctags
 
 echo -e "\n----------------------------------------"
