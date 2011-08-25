@@ -6,7 +6,7 @@ if [ `uname -s` == "Linux" ]; then
     if grep -q "Ubuntu" /etc/issue; then
         ENVSETUPENV="Ubuntu"
         # go ahead and install a vim with everything compiled in
-        sudo apt-get install vim-gnome
+        sudo apt-get install vim-nox
     fi
 fi
 if [ `uname -s` == "Darwin" ]; then
@@ -47,10 +47,10 @@ mv $HOME/.vim/pathogen/autoload $HOME/.vim/autoload
 rm -rf $HOME/.vim/pathogen
 
 
-echo -e "\n----------------------------------------"
-echo "Adding pydiction to bundle."
-echo "----------------------------------------"
-git clone https://github.com/vim-scripts/Pydiction.git $HOME/.vim/bundle/pydiction
+#echo -e "\n----------------------------------------"
+#echo "Adding pydiction to bundle."
+#echo "----------------------------------------"
+#git clone https://github.com/vim-scripts/Pydiction.git $HOME/.vim/bundle/pydiction
 
 
 echo -e "\n----------------------------------------"
