@@ -355,6 +355,7 @@ let NERDTreeWinPos          = 'right'
 let NERDTreeSplitVertical   = 1
 let NERDTreeChDirMode       = 2
 let NERDTreeShowBookmarks   = 1
+let NERDTreeShowHidden      = 1
 
 " -----------------------------------------------------------------------------
 " Fugitive
