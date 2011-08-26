@@ -211,6 +211,7 @@ set softtabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
+set colorcolumn=80
 
 
 " -----------------------------------------------------------------------------
@@ -279,13 +280,15 @@ nnoremap - mao<esc>`a
 " set django filetype
 map D :setfiletype htmldjango<CR>
 
+" pep8
+let g:pep8_map="<Leader>8"
+
 
 " -----------------------------------------------------------------------------
 "  Autocomplete
 " -----------------------------------------------------------------------------
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-
 
 
 " -----------------------------------------------------------------------------
@@ -467,7 +470,7 @@ hi Ignore           guifg=grey        guibg=black       gui=NONE      ctermfg=NO
 hi Error            guifg=#FF6360     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        guisp=#FF6360 " undercurl color
 hi SpellBad         guifg=#FF6360     guibg=NONE        gui=NONE      ctermfg=red         ctermbg=NONE        guisp=#FF6360 " undercurl color
 hi ErrorMsg         guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=red
-hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=white       ctermbg=yellow
+hi WarningMsg       guifg=white       guibg=#FF6C60     gui=BOLD      ctermfg=black       ctermbg=yellow
 
 " Message displayed in lower left, such as --INSERT--
 hi ModeMsg          guifg=black       guibg=#C6C5FE     gui=BOLD      ctermfg=black       ctermbg=cyan        cterm=BOLD
@@ -500,7 +503,8 @@ hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE      ctermfg=li
 
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE
 hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE
-hi Operator         guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue       ctermbg=NONE
+hi Operator         guifg=#96CBFE     guibg=NONE        gui=NONE      ctermfg=blue        ctermbg=NONE
+hi ColorColumn      guifg=#000000     guibg=#303030     gui=NONE      ctermfg=black       ctermbg=236
 
 hi link Character       Constant
 hi link Boolean         Constant
