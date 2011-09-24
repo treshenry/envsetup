@@ -14,6 +14,8 @@ Supported OSes
 Some Vim Mappings
 -----------------
 
+Leader key is set to comma.
+
 <table>
     <tr>
         <th>Key</th>
@@ -21,5 +23,23 @@ Some Vim Mappings
     </tr><tr>
         <td>-</td>
         <td>Launch BufExplorer in current window.</td>
+    </tr><tr>
+        <td>CTRL N</td>
+        <td>Open NerdTree</td>
+    </tr><tr>
+        <td>,8</td>
+        <td>Launch PEP8 checker.</td>
+    </tr><tr>
+        <td>CTRL H</td>
+        <td>Go to left window.</td>
+    </tr><tr>
+        <td>CTRL J</td>
+        <td>Go to lower window.</td>
+    </tr><tr>
+        <td>CTRL K</td>
+        <td>Go to upper window.</td>
+    </tr><tr>
+        <td>CTRL L</td>
+        <td>Go to right window.</td>
     </tr>
 </table>
