@@ -137,6 +137,12 @@ echo "----------------------------------------"
 git clone https://github.com/vim-scripts/TaskList.vim.git $HOME/.vim/bundle/tasklist
 
 
+echo -e "\n----------------------------------------"
+echo "Adding bufexplorer to bundle."
+echo "----------------------------------------"
+git clone https://github.com/markabe/bufexplorer.git $HOME/.vim/bundle/bufexplorer
+
+
 echo "----------------------------------------"
 echo "Writing vimrc."
 echo -e "\n----------------------------------------"
@@ -273,9 +279,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" insert lines shortcut
-nnoremap + maO<esc>`a
-nnoremap - mao<esc>`a
 
 " set django filetype
 map D :setfiletype htmldjango<CR>
@@ -283,6 +286,8 @@ map D :setfiletype htmldjango<CR>
 " pep8
 let g:pep8_map="<Leader>8"
 
+" bufexplorer
+nnoremap - :BufExplorer<cr>
 
 " -----------------------------------------------------------------------------
 "  Autocomplete
