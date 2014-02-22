@@ -143,6 +143,12 @@ echo "----------------------------------------"
 git clone https://github.com/markabe/bufexplorer.git $HOME/.vim/bundle/bufexplorer
 
 
+echo -e "\n----------------------------------------"
+echo "Adding CtrlP to bundle."
+echo "----------------------------------------"
+git clone https://github.com/kien/ctrlp.vim.git $HOME/.vim/bundle/ctrlp
+
+
 echo "----------------------------------------"
 echo "Writing vimrc."
 echo -e "\n----------------------------------------"
@@ -212,12 +218,11 @@ endif
 " -----------------------------------------------------------------------------
 "  Text Formatting
 " -----------------------------------------------------------------------------
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab
-set colorcolumn=80
 
 
 " -----------------------------------------------------------------------------
@@ -284,6 +289,11 @@ map D :setfiletype htmldjango<CR>
 
 " bufexplorer
 nnoremap - :BufExplorer<cr>
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = 'node_modules'
 
 " -----------------------------------------------------------------------------
 "  Autocomplete
