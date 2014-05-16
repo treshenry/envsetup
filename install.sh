@@ -13,7 +13,6 @@ if [ `uname -s` == "Darwin" ]; then
     ENVSETUPENV="Mac"
 fi
 
-
 echo -e "\n----------------------------------------"
 echo "Cleaning up existing VIM stuff."
 echo "----------------------------------------"
@@ -38,7 +37,6 @@ fi
 
 mkdir $HOME/.vim
 
-
 echo -e "\n----------------------------------------"
 echo "Creating pathogen autoload."
 echo "----------------------------------------"
@@ -46,18 +44,10 @@ git clone https://github.com/tpope/vim-pathogen.git $HOME/.vim/pathogen
 mv $HOME/.vim/pathogen/autoload $HOME/.vim/autoload
 rm -rf $HOME/.vim/pathogen
 
-
-#echo -e "\n----------------------------------------"
-#echo "Adding pydiction to bundle."
-#echo "----------------------------------------"
-#git clone https://github.com/vim-scripts/Pydiction.git $HOME/.vim/bundle/pydiction
-
-
 echo -e "\n----------------------------------------"
 echo "Adding nerdtree to bundle."
 echo "----------------------------------------"
 git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
-
 
 echo -e "\n----------------------------------------"
 echo "Adding ack to bundle."
@@ -67,38 +57,16 @@ if [ $ENVSETUPENV == "Ubuntu" ]; then
     sudo apt-get install ack-grep
 fi
 
-
 echo -e "\n----------------------------------------"
 echo "Adding nerdcommenter to bundle."
 echo "----------------------------------------"
 git clone https://github.com/scrooloose/nerdcommenter.git $HOME/.vim/bundle/nerdcommenter
-
 
 echo -e "\n----------------------------------------"
 echo "Adding pep8 to bundle."
 echo "----------------------------------------"
 git clone https://github.com/nvie/vim-pep8.git $HOME/.vim/bundle/pep8
 sudo pip install pep8
-
-
-echo -e "\n----------------------------------------"
-echo "Adding pyflakes to bundle."
-echo "----------------------------------------"
-git clone https://github.com/vim-scripts/pyflakes.vim.git $HOME/.vim/bundle/pyflakes
-sudo pip install pyflakes
-
-
-echo -e "\n----------------------------------------"
-echo "Adding fugitive to bundle."
-echo "----------------------------------------"
-git clone https://github.com/vim-scripts/fugitive.vim.git $HOME/.vim/bundle/fugitive
-
-
-echo -e "\n----------------------------------------"
-echo "Adding snipmate to bundle."
-echo "----------------------------------------"
-git clone https://github.com/msanders/snipmate.vim.git $HOME/.vim/bundle/snipmate
-
 
 echo -e "\n----------------------------------------"
 echo "Adding vim-taglist to bundle."
@@ -118,36 +86,15 @@ echo "Adding supertab to bundle."
 echo "----------------------------------------"
 git clone https://github.com/tsaleh/vim-supertab.git $HOME/.vim/bundle/vim-supertab
 
-
-echo -e "\n----------------------------------------"
-echo "Adding rope-vim to bundle."
-echo "----------------------------------------"
-git clone https://github.com/sontek/rope-vim.git $HOME/.vim/bundle/rope-vim
-
-
-echo -e "\n----------------------------------------"
-echo "Adding pydoc to bundle."
-echo "----------------------------------------"
-git clone https://github.com/fs111/pydoc.vim.git $HOME/.vim/bundle/pydoc
-
-
-echo -e "\n----------------------------------------"
-echo "Adding tasklist to bundle."
-echo "----------------------------------------"
-git clone https://github.com/vim-scripts/TaskList.vim.git $HOME/.vim/bundle/tasklist
-
-
 echo -e "\n----------------------------------------"
 echo "Adding bufexplorer to bundle."
 echo "----------------------------------------"
 git clone https://github.com/markabe/bufexplorer.git $HOME/.vim/bundle/bufexplorer
 
-
 echo -e "\n----------------------------------------"
 echo "Adding CtrlP to bundle."
 echo "----------------------------------------"
 git clone https://github.com/kien/ctrlp.vim.git $HOME/.vim/bundle/ctrlp
-
 
 echo "----------------------------------------"
 echo "Writing vimrc."
@@ -164,7 +111,7 @@ set fileencoding=utf8
 
 
 filetype off
-call pathogen#incubate()
+call pathogen#infect('bundle/{}')
 call pathogen#helptags()
 
 nmap :Q :q
