@@ -1,18 +1,5 @@
 #!/bin/bash
 
-# Determine environment
-ENVSETUPENV="Unknown"
-if [ `uname -s` == "Linux" ]; then
-    if grep -q "Ubuntu" /etc/issue; then
-        ENVSETUPENV="Ubuntu"
-        # go ahead and install a vim with everything compiled in
-        sudo apt-get install vim-nox
-    fi
-fi
-if [ `uname -s` == "Darwin" ]; then
-    ENVSETUPENV="Mac"
-fi
-
 echo -e "\n----------------------------------------"
 echo "Cleaning up existing VIM stuff."
 echo "----------------------------------------"
@@ -50,36 +37,9 @@ echo "----------------------------------------"
 git clone https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
 
 echo -e "\n----------------------------------------"
-echo "Adding ack to bundle."
-echo "----------------------------------------"
-git clone https://github.com/mileszs/ack.vim.git $HOME/.vim/bundle/ack
-if [ $ENVSETUPENV == "Ubuntu" ]; then
-    sudo apt-get install ack-grep
-fi
-
-echo -e "\n----------------------------------------"
 echo "Adding nerdcommenter to bundle."
 echo "----------------------------------------"
 git clone https://github.com/scrooloose/nerdcommenter.git $HOME/.vim/bundle/nerdcommenter
-
-echo -e "\n----------------------------------------"
-echo "Adding pep8 to bundle."
-echo "----------------------------------------"
-git clone https://github.com/nvie/vim-pep8.git $HOME/.vim/bundle/pep8
-sudo pip install pep8
-
-echo -e "\n----------------------------------------"
-echo "Adding vim-taglist to bundle."
-echo "----------------------------------------"
-git clone https://github.com/mexpolk/vim-taglist.git $HOME/.vim/bundle/vim-taglist
-git clone https://github.com/mortice/exuberant-ctags.git $HOME/.vim/ctags
-HOLDPATH=`pwd`
-cd $HOME/.vim/ctags
-./configure
-make
-sudo make install
-cd $HOLDPATH
-rm -rf $HOME/.vim/ctags
 
 echo -e "\n----------------------------------------"
 echo "Adding supertab to bundle."
@@ -96,10 +56,16 @@ echo "Adding CtrlP to bundle."
 echo "----------------------------------------"
 git clone https://github.com/kien/ctrlp.vim.git $HOME/.vim/bundle/ctrlp
 
-echo "----------------------------------------"
-echo "Writing vimrc."
 echo -e "\n----------------------------------------"
+echo "Adding closetag to bundle."
+echo "----------------------------------------"
+git clone https://github.com/alvan/vim-closetag $HOME/.vim/bundle/closetag
+
+echo -e "\n----------------------------------------"
+echo "Writing vimrc."
+echo "----------------------------------------"
 cat << "ENDFILE" > $HOME/.vimrc
+
 " -----------------------------------------------------------------------------
 "  General
 " -----------------------------------------------------------------------------
@@ -108,7 +74,6 @@ set nocompatible
 set history=100
 set encoding=utf8
 set fileencoding=utf8
-
 
 filetype off
 call pathogen#infect('bundle/{}')
@@ -123,7 +88,6 @@ nmap :Q :q
 if has("vms")
     set nobackup              " do not keep a backup file, use versions instead
 endif
-
 
 " -----------------------------------------------------------------------------
 "  UI
@@ -141,7 +105,6 @@ set backspace=indent,eol,start
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set hlsearch
-
 
 " -----------------------------------------------------------------------------
 "  Visual Cues
@@ -161,7 +124,6 @@ if &t_Co != 256
   let g:CSApprox_loaded=0
 endif
 
-
 " -----------------------------------------------------------------------------
 "  Text Formatting
 " -----------------------------------------------------------------------------
@@ -171,14 +133,12 @@ set shiftwidth=2
 set smarttab
 set expandtab
 
-
 " -----------------------------------------------------------------------------
 "  Whitespace
 " -----------------------------------------------------------------------------
 highlight ExtraWhiteSpace ctermbg=red guibg=red
 :match ExtraWhiteSpace /\s\+$\|\t\+/
 match ExtraWhitespace /\s\+$\|\t\+/
-
 
 " -----------------------------------------------------------------------------
 "  Autocommands
@@ -203,13 +163,11 @@ if has("autocmd")
     augroup END
 endif
 
-
 " -----------------------------------------------------------------------------
 "  Variables
 " -----------------------------------------------------------------------------
 
 let mapleader=","
-
 
 " -----------------------------------------------------------------------------
 "  Mappings
@@ -231,9 +189,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" set django filetype
-map D :setfiletype htmldjango<CR>
-
 " bufexplorer
 nnoremap - :BufExplorer<cr>
 
@@ -242,74 +197,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = 'node_modules'
 
-" -----------------------------------------------------------------------------
-"  Autocomplete
-" -----------------------------------------------------------------------------
-
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-
-" -----------------------------------------------------------------------------
-" Virtualenv
-" -----------------------------------------------------------------------------
-
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-
-" -----------------------------------------------------------------------------
-" PEP8 / Pyflakes
-" -----------------------------------------------------------------------------
-
-let g:pep8_map='<leader>8'
-let g:pyflakes_use_quickfix = 0
-
-
-" -----------------------------------------------------------------------------
-" Rope
-" -----------------------------------------------------------------------------
-
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
-
-
-" -----------------------------------------------------------------------------
-" Ack
-" -----------------------------------------------------------------------------
-
-nmap <leader>a <Esc>:Ack!
-
-
-" -----------------------------------------------------------------------------
-"  TaskList
-" -----------------------------------------------------------------------------
-
-map T :TaskList<CR>
-map <leader>v <Plug>TaskList
-
-
-" -----------------------------------------------------------------------------
-"  TagList
-" -----------------------------------------------------------------------------
-
-map S :TlistToggle<CR>
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let Tlist_GainFocus_On_ToggleOpen = 1
-
-
-" -----------------------------------------------------------------------------
-"  NERDTree
-" -----------------------------------------------------------------------------
-
+" NERDTree
 nmap <silent> <c-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore          = ['\.pyc$','\.swp$']
 let NERDTreeWinPos          = 'right'
@@ -318,20 +206,10 @@ let NERDTreeChDirMode       = 2
 let NERDTreeShowBookmarks   = 1
 let NERDTreeShowHidden      = 1
 
-" -----------------------------------------------------------------------------
-" Fugitive
-" -----------------------------------------------------------------------------
+" closetag
+let g:closetag_filenames = "*.html"
 
-nnoremap <Leader>gd :Gdiff<cr>
-nnoremap <Leader>gdo :diffoff!<cr><c-w>h:bd<cr>
-nnoremap <Leader>gs :Gstatus<cr>
 ENDFILE
-
-if [ $ENVSETUPENV == "Ubuntu" ]; then
-cat << EOF >> $HOME/.vimrc
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-EOF
-fi
 
 echo "Writing colors."
 echo "----------------------------------------"
@@ -559,7 +437,3 @@ hi  link csXmlTag             Keyword
 
 EOF
 
-
-if [ $ENVSETUPENV == "Mac" ]; then
-    echo "You need to install brew and ack."
-fi
