@@ -62,6 +62,11 @@ echo "----------------------------------------"
 git clone https://github.com/alvan/vim-closetag $HOME/.vim/bundle/closetag
 
 echo -e "\n----------------------------------------"
+echo "Adding vim-less to bundle."
+echo "----------------------------------------"
+git clone https://github.com/genoma/vim-less.git $HOME/.bim/bundle/vim-less
+
+echo -e "\n----------------------------------------"
 echo "Writing vimrc."
 echo "----------------------------------------"
 cat << "ENDFILE" > $HOME/.vimrc
