@@ -214,6 +214,9 @@ let NERDTreeShowHidden      = 1
 " closetag
 let g:closetag_filenames = "*.html"
 
+" supertab
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
 ENDFILE
 
 echo "Writing colors."
