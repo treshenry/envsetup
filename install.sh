@@ -44,7 +44,7 @@ git clone https://github.com/scrooloose/nerdcommenter.git $HOME/.vim/bundle/nerd
 echo -e "\n----------------------------------------"
 echo "Adding supertab to bundle."
 echo "----------------------------------------"
-git clone https://github.com/tsaleh/vim-supertab.git $HOME/.vim/bundle/vim-supertab
+git clone https://github.com/ervandew/supertab $HOME/.vim/bundle/vim-supertab
 
 echo -e "\n----------------------------------------"
 echo "Adding bufexplorer to bundle."
@@ -64,7 +64,7 @@ git clone https://github.com/alvan/vim-closetag $HOME/.vim/bundle/closetag
 echo -e "\n----------------------------------------"
 echo "Adding vim-less to bundle."
 echo "----------------------------------------"
-git clone https://github.com/genoma/vim-less.git $HOME/.bim/bundle/vim-less
+git clone https://github.com/genoma/vim-less.git $HOME/.vim/bundle/vim-less
 
 echo -e "\n----------------------------------------"
 echo "Writing vimrc."
@@ -216,6 +216,9 @@ let g:closetag_filenames = "*.html"
 
 " supertab
 let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+" turn off beeping
+set noerrorbells visualbell t_vb=
 
 ENDFILE
 
