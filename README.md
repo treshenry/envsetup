@@ -27,9 +27,6 @@ Leader key is set to comma.
         <td>CTRL N</td>
         <td>Open NerdTree</td>
     </tr><tr>
-        <td>,8</td>
-        <td>Launch PEP8 checker.</td>
-    </tr><tr>
         <td>CTRL H</td>
         <td>Go to left window.</td>
     </tr><tr>
@@ -41,5 +38,8 @@ Leader key is set to comma.
     </tr><tr>
         <td>CTRL L</td>
         <td>Go to right window.</td>
+    </tr><tr>
+        <td>[s ]s</td>
+        <td>Previous or next spelling issue.</td>
     </tr>
 </table>

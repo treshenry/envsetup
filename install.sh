@@ -67,6 +67,31 @@ echo "----------------------------------------"
 git clone https://github.com/genoma/vim-less.git $HOME/.vim/bundle/vim-less
 
 echo -e "\n----------------------------------------"
+echo "Adding lightline to bundle."
+echo "----------------------------------------"
+git clone https://github.com/itchyny/lightline.vim $HOME/.vim/bundle/lightline.vim
+
+echo -e "\n----------------------------------------"
+echo "Adding goyo to bundle."
+echo "----------------------------------------"
+git clone https://github.com/junegunn/goyo.vim $HOME/.vim/bundle/goyo.vim
+
+echo -e "\n----------------------------------------"
+echo "Adding vim-pencil to bundle."
+echo "----------------------------------------"
+git clone https://github.com/reedes/vim-pencil $HOME/.vim/bundle/vim-pencil
+
+echo -e "\n----------------------------------------"
+echo "Adding vim-lexical to bundle."
+echo "----------------------------------------"
+git clone https://github.com/reedes/vim-lexical $HOME/.vim/bundle/vim-lexical
+
+echo -e "\n----------------------------------------"
+echo "Adding vim-litecorrect to bundle."
+echo "----------------------------------------"
+git clone https://github.com/reedes/vim-litecorrect $HOME/.vim/bundle/vim-litecorrect
+
+echo -e "\n----------------------------------------"
 echo "Writing vimrc."
 echo "----------------------------------------"
 cat << "ENDFILE" > $HOME/.vimrc
@@ -219,6 +244,17 @@ let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 " turn off beeping
 set noerrorbells visualbell t_vb=
+
+" nice status with lightline
+set laststatus=2
+
+" set up vim for long-form writing
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+                            \ | call lexical#init()
+                            \ | call litecorrect#init()
+augroup END
 
 ENDFILE
 
