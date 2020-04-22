@@ -92,6 +92,11 @@ echo "----------------------------------------"
 git clone https://github.com/reedes/vim-litecorrect $HOME/.vim/bundle/vim-litecorrect
 
 echo -e "\n----------------------------------------"
+echo "Adding vimwiki to bundle."
+echo "----------------------------------------"
+git clone https://github.com/vimwiki/vimwiki $HOME/.vim/bundle/vimwiki
+
+echo -e "\n----------------------------------------"
 echo "Writing vimrc."
 echo "----------------------------------------"
 cat << "ENDFILE" > $HOME/.vimrc
@@ -251,10 +256,12 @@ set laststatus=2
 " set up vim for long-form writing
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard', 'autoformat': 0})
                             \ | call lexical#init()
                             \ | call litecorrect#init()
 augroup END
+
+let g:vimwiki_list = [{'path': '~/Documents/src/wiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1}]
 
 ENDFILE
 
