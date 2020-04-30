@@ -47,11 +47,6 @@ echo "----------------------------------------"
 git clone https://github.com/ervandew/supertab $HOME/.vim/bundle/vim-supertab
 
 echo -e "\n----------------------------------------"
-echo "Adding bufexplorer to bundle."
-echo "----------------------------------------"
-git clone https://github.com/markabe/bufexplorer.git $HOME/.vim/bundle/bufexplorer
-
-echo -e "\n----------------------------------------"
 echo "Adding CtrlP to bundle."
 echo "----------------------------------------"
 git clone https://github.com/kien/ctrlp.vim.git $HOME/.vim/bundle/ctrlp
@@ -149,6 +144,7 @@ filetype on                  " try to detect filetypes
 filetype plugin indent on    " enable loading indent file for filetype
 syntax on
 colorscheme ir_black
+set termguicolors
 
 " Set global color scheme.
 let python_highlight_all = 1
@@ -256,12 +252,31 @@ set laststatus=2
 " set up vim for long-form writing
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard', 'autoformat': 0})
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard', 'autoformat': 1})
+                            \ | call lexical#init()
+                            \ | call litecorrect#init()
+  autocmd FileType vimwiki call pencil#init({'wrap': 'soft'})
                             \ | call lexical#init()
                             \ | call litecorrect#init()
 augroup END
 
-let g:vimwiki_list = [{'path': '~/Documents/src/wiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_tags': 1}]
+let g:vimwiki_list = [{'path': '~/Documents/src/wiki/', 'auto_tags': 1}]
+
+" run goyo for vimwiki automatically
+function! s:auto_goyo()
+  if &ft == 'vimwiki'
+    Goyo 80
+  elseif exists('#goyo')
+    let bufnr = bufnr('%')
+    Goyo!
+    execute 'b '.bufnr
+  endif
+endfunction
+
+augroup goyo_markdown
+  autocmd!
+  autocmd BufEnter * call s:auto_goyo()
+augroup END
 
 ENDFILE
 
@@ -487,7 +502,10 @@ hi  link pythonParen          Identifier
 hi  link csXmlTag             Keyword
 
 
-" Special for PHP
+" Special for Vimwiki
+hi VimwikiHeader1      guifg=#FFD2A7     guibg=NONE        gui=BOLD      ctermfg=red         ctermbg=NONE
+hi VimwikiHeader2      guifg=#96CBFE     guibg=NONE        gui=BOLD      ctermfg=blue        ctermbg=NONE
+hi VimwikiHeader3      guifg=#6699CC     guibg=NONE        gui=BOLD      ctermfg=blue        ctermbg=NONE
 
 EOF
 
