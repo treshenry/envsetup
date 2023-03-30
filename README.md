@@ -9,4 +9,5 @@ Old vim stuff has been moved to /vim
 /vscode has keybindings.json and settings.json which need to find their way to:
 
 - Mac: ```/Users/tres/Library/Application Support/Code/User```
+- Linux: ```/home/tres/.config/Code/User```
 

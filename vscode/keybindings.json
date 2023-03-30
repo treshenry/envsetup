@@ -103,5 +103,23 @@
     {
         "key": "ctrl+9",
         "command": "-workbench.action.openEditorAtIndex9"
+    },
+    {
+        "key": "ctrl+alt+e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.closeSidebar"
     }
 ]
