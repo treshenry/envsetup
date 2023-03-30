@@ -1,0 +1,68 @@
+{
+    "editor.rulers": [
+        {"column": 80}
+    ],
+    "editor.renderWhitespace": "all",
+    "cSpell.enableFiletypes": [
+        "gdscript"
+    ],
+    "[typescript][typescriptreact][javascript][javascriptreact][graphql]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true
+    },
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma",
+        "editor.formatOnSave": true
+    },
+    "emmet.includeLanguages": {
+        "elixir": "html",
+        "phoenix-heex": "html",
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "auto-close-tag.activationOnLanguage": [
+        "xml",
+        "php",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "plaintext",
+        "markdown",
+        "vue",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "elixir",
+        "plist",
+        "phoenix-heex"
+    ],
+    "files.associations": {
+        "*.heex": "phoenix-heex",
+    },
+    "[elixir]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "JakeBecker.elixir-ls"
+    },
+    "[phoenix-heex]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "JakeBecker.elixir-ls"
+    },
+    "workbench.colorTheme": "Community Material Theme Darker",
+    "elixirLS.suggestSpecs": false,
+    "elixirLS.dialyzerEnabled": true,
+    "elixirLS.signatureAfterComplete": false,
+    "elixirLS.fetchDeps": false,
+    "workbench.editor.limit.value": 4,
+    "explorer.openEditors.visible": 0,
+    "tailwindCSS.includeLanguages": {
+        "elixir": "HTML (Eex)"
+    },
+    "window.zoomLevel": 2,
+}
