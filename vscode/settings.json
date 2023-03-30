@@ -38,10 +38,6 @@
         "editor.tabSize": 2,
         "editor.formatOnSave": true
     },
-    "[prisma]": {
-        "editor.defaultFormatter": "Prisma.prisma",
-        "editor.formatOnSave": true
-    },
     "auto-close-tag.activationOnLanguage": [
         "xml",
         "php",
