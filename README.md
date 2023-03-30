@@ -13,6 +13,13 @@ Old vim stuff has been moved to /vim
 
 For example:
 
+### Mac
+
+```
+ln -s /Users/tres/Documents/src/envsetup/vscode/settings.json /Users/tres/Library/Application\ Support/Code/User/settings.json
+ln -s /Users/tres/Documents/src/envsetup/vscode/keybindings.json /Users/tres/Library/Application\ Support/Code/User/settings.json
+```
+
 ### Linux
 
 ```
