@@ -11,3 +11,12 @@ Old vim stuff has been moved to /vim
 - Mac: ```/Users/tres/Library/Application Support/Code/User```
 - Linux: ```/home/tres/.config/Code/User```
 
+For example:
+
+### Linux
+
+```
+ln -s /home/tres/Documents/src/envsetup/vscode/settings.json /home/tres/.config/Code/User/settings.json
+ln -s /home/tres/Documents/src/envsetup/vscode/keybindings.json /home/tres/.config/Code/User/keybindings.json
+```
+
